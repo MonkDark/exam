@@ -1,0 +1,56 @@
+# 端口设置
+server:
+  port: 9090
+# Spring
+spring:
+  #  修改路径匹配模式以适应Springfox
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  devtools:
+    restart:
+      # 开启热部署（更改文件后，自动重启）
+      enabled: true
+      ## 设置哪些资源变动后不触发热部署，会覆盖默认的exclude内容（资源不会触发重启，但会触发实时重新加载）
+      # exclude: WEB-INF/**,static/**
+      ## 监控额外的路径（优先于exclude）
+      # additional-paths: src/main/java
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/exam?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    # Hikari 连接池
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      # 连接池中允许的最小连接数。缺省值：10
+      minimum-idle: 10
+      # 连接池中允许的最大连接数。缺省值：10
+      maximum-pool-size: 100
+      # 自动提交
+      auto-commit: true
+      # 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟
+      idle-timeout: 10000
+      # 连接池名字
+      pool-name: 泡泡的HikariCP
+      # 一 个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒
+      max-lifetime: 1800000
+      # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒
+      connection-timeout: 30000
+#      全局时间配置，localDateTime需配合时间配置类使用
+  jackson:
+    default-property-inclusion: non_null # 不处理空值
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+# mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  # 打印出SQL语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 配置swagger
+springfox:
+  documentation:
+    enabled: true
+

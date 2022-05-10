@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monk.exam.mapper.PaperMapper">
+
+    <resultMap id="BaseResultMap" type="com.monk.exam.entity.Paper">
+    <!--@mbg.generated-->
+    <!--@Table paper -->
+        <id column="id" property="id"  jdbcType="INTEGER"/>
+    <result column="course" property="course"  jdbcType="VARCHAR"/>
+    <result column="description" property="description"  jdbcType="VARCHAR"/>
+    <result column="level" property="level"  jdbcType="OTHER"/>
+    <result column="type" property="type"  jdbcType="VARCHAR"/>
+    <result column="choice_question_number" property="choiceQuestionNumber"  jdbcType="INTEGER"/>
+    <result column="judge_question_number" property="judgeQuestionNumber"  jdbcType="INTEGER"/>
+    <result column="fill_question_number" property="fillQuestionNumber"  jdbcType="INTEGER"/>
+    <result column="create_time" property="createTime"  jdbcType="TIMESTAMP"/>
+    <result column="create_by" property="createBy"  jdbcType="VARCHAR"/>
+        
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+        id, course, description, level, type, choice_question_number, judge_question_number, fill_question_number, create_time, create_by
+    </sql>
+</mapper>
